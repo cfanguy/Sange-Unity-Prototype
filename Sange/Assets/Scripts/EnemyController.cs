@@ -46,4 +46,9 @@ public class EnemyController : MonoBehaviour
 
         rigidbody2D.MovePosition(position);
     }
+
+    public void Hit()
+    {
+        Destroy(gameObject);
+    }
 }

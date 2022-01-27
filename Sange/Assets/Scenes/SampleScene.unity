@@ -369,7 +369,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dc1facc10076145b5a2fe802667e6bae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5649,6 +5649,10 @@ PrefabInstance:
     - target: {fileID: 4661105002469589077, guid: d743821adb9fd4428ad843d8f97b7472, type: 3}
       propertyPath: m_Name
       value: player_sange
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661105002469589077, guid: d743821adb9fd4428ad843d8f97b7472, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4661105002469589081, guid: d743821adb9fd4428ad843d8f97b7472, type: 3}
       propertyPath: m_SleepingMode

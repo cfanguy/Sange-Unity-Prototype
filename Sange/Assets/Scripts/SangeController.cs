@@ -10,6 +10,8 @@ public class SangeController : MonoBehaviour
     float horizontal;
     float vertical;
 
+    public GameObject projectilePrefab;
+
     Animator animator;
     Vector2 lookDirection = new Vector2(0, -1);
 
@@ -38,6 +40,11 @@ public class SangeController : MonoBehaviour
         animator.SetFloat("Look X", lookDirection.x);
         animator.SetFloat("Look Y", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Launch();
+        }
     }
 
     void FixedUpdate() {
@@ -46,5 +53,36 @@ public class SangeController : MonoBehaviour
         position.y += speed * vertical * Time.deltaTime;
         
         rigidbody2d.MovePosition(position);
+    }
+
+    void Launch()
+    {
+        // right: 1,0,  left: -1,0, up: 0,1, down: 0,-1
+
+        // set projectile's start position based on the direction the
+        //   character is facing based on the above numbers for each direction
+        Vector2 projectileStartPosition;
+
+        // if x = 0, then direction is up or down
+        if(lookDirection.x == 0)
+        {
+            // sets object slightly above(0.5) or below(-0.5) character
+            projectileStartPosition = 1.0f * lookDirection.y * Vector2.up;
+        }
+        // else means y = 0 , so direction is left or right
+        else
+        {
+            // sets object slightly to the right(0.5) or left(-0.5) of the character
+            projectileStartPosition = 0.6f * lookDirection.x * Vector2.right;
+        }
+
+        GameObject projectileObject = Instantiate(projectilePrefab,
+            rigidbody2d.position + projectileStartPosition, Quaternion.identity);
+
+        // Debug.Log(lookDirection.x + " " + lookDirection.y);
+
+
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(lookDirection, 0);
     }
 }
