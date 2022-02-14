@@ -76,4 +76,7 @@ crashlytics-build.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/unity
 
+# Mono auto generated files
+mono_crash.*
+
 .DS_Store
