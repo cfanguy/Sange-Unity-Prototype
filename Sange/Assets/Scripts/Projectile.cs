@@ -21,7 +21,21 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, timer);
     }
 
+    public void SwingWeapon(Vector2 direction, float force)
+    {
+        SetSwordDirection(direction);
+        rigidbody2d.AddForce(direction * force);
+    }
+
     public void Launch(Vector2 direction, float force)
+    {
+        timer = 5f;
+
+        SetShotDirection(direction);
+        rigidbody2d.AddForce(direction * force);
+    }
+
+    private void SetSwordDirection(Vector2 direction)
     {
         // right: 1,0,  left: -1,0, up: 0,1, down: 0,-1
 
@@ -48,15 +62,39 @@ public class Projectile : MonoBehaviour
                 spriteRenderer.flipY = true;
             }
         }
+    }
 
-
-        rigidbody2d.AddForce(direction * force);
+    private void SetShotDirection(Vector2 direction)
+    {
+        // up no flips
+        if (direction.x == 0)
+        {
+            // down
+            if(direction.y == -1)
+            {
+                spriteRenderer.flipY = true;
+            }
+        }
+        else
+        {
+            // left
+            if (direction.x == -1)
+            {
+                // rotate z 90
+                gameObject.transform.Rotate(0, 0, 90);
+            }
+            else
+            {
+                // rotate z -90
+                gameObject.transform.Rotate(0, 0, -90);
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log(collision.gameObject);
-        //Destroy(gameObject);
+        Destroy(gameObject);
 
         // if projectile encounters enemy, destroy enemy object
         EnemyController e = collision.collider.GetComponent<EnemyController>();

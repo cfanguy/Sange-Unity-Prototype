@@ -10,6 +10,7 @@ public class SangeController : MonoBehaviour
     float horizontal;
     float vertical;
 
+    public GameObject swordPrefab;
     public GameObject projectilePrefab;
 
     Animator animator;
@@ -43,6 +44,11 @@ public class SangeController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
+            SwingWeapon();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             Launch();
         }
     }
@@ -55,16 +61,38 @@ public class SangeController : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
+    void SwingWeapon()
+    {
+        Vector2 projectileStartPosition = SetDirection(lookDirection,
+            out projectileStartPosition);
+
+        GameObject projectileObject = Instantiate(swordPrefab,
+            rigidbody2d.position + projectileStartPosition, Quaternion.identity);
+
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.SwingWeapon(lookDirection, 0);
+    }
+
     void Launch()
     {
-        // right: 1,0,  left: -1,0, up: 0,1, down: 0,-1
+        Vector2 projectileStartPosition = SetDirection(lookDirection,
+            out projectileStartPosition);
 
+        GameObject projectileObject = Instantiate(projectilePrefab,
+            rigidbody2d.position + projectileStartPosition, Quaternion.identity);
+
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(lookDirection, 300);
+    }
+
+    Vector2 SetDirection(Vector2 direction, out Vector2 projectileStartPosition)
+    {
+        // right: 1,0,  left: -1,0, up: 0,1, down: 0,-1
         // set projectile's start position based on the direction the
         //   character is facing based on the above numbers for each direction
-        Vector2 projectileStartPosition;
 
         // if x = 0, then direction is up or down
-        if(lookDirection.x == 0)
+        if (lookDirection.x == 0)
         {
             // sets object slightly above(0.5) or below(-0.5) character
             projectileStartPosition = 1.0f * lookDirection.y * Vector2.up;
@@ -76,13 +104,6 @@ public class SangeController : MonoBehaviour
             projectileStartPosition = 0.6f * lookDirection.x * Vector2.right;
         }
 
-        GameObject projectileObject = Instantiate(projectilePrefab,
-            rigidbody2d.position + projectileStartPosition, Quaternion.identity);
-
-        // Debug.Log(lookDirection.x + " " + lookDirection.y);
-
-
-        Projectile projectile = projectileObject.GetComponent<Projectile>();
-        projectile.Launch(lookDirection, 0);
+        return projectileStartPosition;
     }
 }
