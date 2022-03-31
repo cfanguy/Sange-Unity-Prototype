@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 788858209
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -3845818184468211765, guid: 2f75b05b8806c46c49094048f682c93e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,6 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  maxHealth: 5
+  timeInvincible: 2
+  currentHealth: 0
   swordPrefab: {fileID: 8108674384673727423, guid: a1287a614b9a84b4a87ead2c7e50f1f7, type: 3}
   projectilePrefab: {fileID: 7999896186282146433, guid: c0dccd4500253421b91423faa79d71a2, type: 3}
 --- !u!50 &4661105002469589081
