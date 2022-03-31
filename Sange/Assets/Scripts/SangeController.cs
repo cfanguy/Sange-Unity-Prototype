@@ -36,8 +36,16 @@ public class SangeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        if (currentHealth > 0)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        }
+        else
+        {
+            horizontal = 0f;
+            vertical = 0f;
+        }
 
         Vector2 move = new Vector2(horizontal, vertical);
 
@@ -140,7 +148,11 @@ public class SangeController : MonoBehaviour
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log("health " + currentHealth);
-        //UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+
+        if (currentHealth == 0)
+        {
+            UIHealthBar.instance.GameOver();
+        }
     }
 }
