@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     public bool vertical;
     public float changeTime = 3.0f;
 
-    Rigidbody2D rigidbody2D;
+    new Rigidbody2D rigidbody2D;
     float timer;
     int direction = 1;
 
@@ -45,6 +45,16 @@ public class EnemyController : MonoBehaviour
         }
 
         rigidbody2D.MovePosition(position);
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        SangeController player = other.gameObject.GetComponent<SangeController>();
+
+        if (player != null)
+        {
+            player.ChangeHealth(-1);
+        }
     }
 
     public void Hit()
