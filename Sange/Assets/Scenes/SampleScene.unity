@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 465212943}
   - component: {fileID: 465212945}
   - component: {fileID: 465212944}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21278,6 +21278,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.46, y: 0.62}
   m_EdgeRadius: 0
+--- !u!114 &1766317198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766317193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4c353ed4c9f4daab632aa2daac4ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayTime: 4
+  dialogBox: {fileID: 1962549718}
 --- !u!4 &1783841758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4661105002469589083, guid: d743821adb9fd4428ad843d8f97b7472, type: 3}
@@ -21363,6 +21377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dels
       objectReference: {fileID: 0}
+    - target: {fileID: 7181929329152181872, guid: f9d8b4b4b454c4cb3b951d472a0b8f49, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7181929329152181879, guid: f9d8b4b4b454c4cb3b951d472a0b8f49, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -21421,7 +21439,7 @@ GameObject:
   - component: {fileID: 1962549722}
   - component: {fileID: 1962549721}
   - component: {fileID: 1962549720}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21521,7 +21539,7 @@ GameObject:
   - component: {fileID: 2001504792}
   - component: {fileID: 2001504794}
   - component: {fileID: 2001504793}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Dialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
