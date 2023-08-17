@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
         timer = 5f;
 
         SetShotDirection(direction);
-        rigidbody2d.AddForce(direction * force);
+        rigidbody2d.AddForce(direction * force * 2);
     }
 
     private void SetSwordDirection(Vector2 direction)
