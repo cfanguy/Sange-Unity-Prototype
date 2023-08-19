@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     public float speed;
     public bool vertical;
-    public float changeTime = 3.0f;
+    public float changeTime = 6.0f;
 
     new Rigidbody2D rigidbody2D;
     float timer;
@@ -29,6 +29,10 @@ public class EnemyController : MonoBehaviour
             direction = -direction;
             timer = changeTime;
         }
+
+        Vector3 characterScale = transform.localScale;
+        characterScale.x = direction;
+        transform.localScale = characterScale;
     }
 
     void FixedUpdate()
